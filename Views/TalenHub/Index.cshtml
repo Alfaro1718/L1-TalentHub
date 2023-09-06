@@ -1,0 +1,79 @@
+﻿@model IEnumerable<L1_TalentHub.Models.Registros>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Talent Hub</h1>
+
+<form asp-action="Buscar">
+    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
+    <p>
+
+    </p>
+    <input name="id" type="text" value="" class="form-control" />
+</form>
+
+<p>
+
+</p>
+
+<form method="post" enctype="multipart/form-data" asp-controller="TalenHub" asp-action="LeeArchivo">
+
+    <input type="file" class="form-control-file" name="ArchivoCargado" />
+    <br />
+    <input type="submit" value="Agregar" class="form-file" />
+
+</form>
+
+<p>
+
+</p>
+
+<h3>
+    <span style="color: red;">
+        @TempData["Mensaje"]
+    </span>
+</h3>
+
+<p>
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dpi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dpi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
